@@ -93,7 +93,7 @@ sub probevars {
 			_example => '/usr/bin/tcpping',
 			_sub => sub { 
 				my $val = shift;
-
+				return undef if $ENV{SERVER_SOFTWARE}; # don't check for tcpping presence in cgi mode
         			return "ERROR: TCPPing 'binary' does not point to an executable"
             				unless -f $val and -x _;
 
